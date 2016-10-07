@@ -94,13 +94,16 @@ namespace Swensen.Ior.Core {
         [Category("Request")]
         [DisplayName("Proxy Server")]
         [Description("Proxy server used by requests. If blank, no proxy server is used.")]
-        public string ProxyServer {
+        public string ProxyServer
+        {
             get { return settings.ProxyServer; }
-            set {
+            set
+            {
                 Uri url = null;
-                if(value.IsBlank())
+                if (value.IsBlank())
                     settings.ProxyServer = "";
-                else { 
+                else
+                {
                     var forgivingUrl = value.Contains("://") ? value : "http://" + value;
                     if (Uri.TryCreate(forgivingUrl, UriKind.Absolute, out url))
                         settings.ProxyServer = url.ToString();
@@ -108,6 +111,14 @@ namespace Swensen.Ior.Core {
                         lastValidationError = Tuple.Create("ProxyServer", "The given URL is invalid");
                 }
             }
+        }
+        [Category("Request")]
+        [DisplayName("Automatically Authenticate (Ntlm)")]
+        [Description("Use inherited Windows Authenication using NTLM to authenticate")]
+        public bool AutomaticallyAuthenticateNtlm
+        {
+            get { return settings.AutomaticallyAuthenticateNtlm; }
+            set { settings.AutomaticallyAuthenticateNtlm = value; }
         }
 
         [Category("Response")]

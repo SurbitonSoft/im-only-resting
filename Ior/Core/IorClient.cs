@@ -47,7 +47,8 @@ namespace Swensen.Ior.Core {
 
             var handler = new HttpClientHandler {
                 AllowAutoRedirect = followRedirects,
-                UseCookies = hasCookies
+                UseCookies = hasCookies,
+                UseDefaultCredentials = requestModel.AutomaticallyAuthenticateNtlm
             };
 
             if (!proxyServer.IsBlank()) {
@@ -119,7 +120,7 @@ namespace Swensen.Ior.Core {
 
             var ctokenSource = new CancellationTokenSource();
             var ctoken = ctokenSource.Token;
-            
+
             client.SendAsync(request,ctoken).ContinueWith(responseTask => {
                 try {
                     var end = DateTime.Now;
@@ -161,7 +162,6 @@ namespace Swensen.Ior.Core {
 
             return ctokenSource;
         }
-
 
         //todo can we make this async and cancellable? (since could take a long time)
         //see for when to use a BOM ("preamble") http://www.w3.org/International/questions/qa-byte-order-mark

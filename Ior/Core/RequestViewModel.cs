@@ -25,6 +25,7 @@ namespace Swensen.Ior.Core {
         public string Method { get; set; }
         public string[] Headers { get; set; }
         public string Body { get; set; }
+        public bool AutomaticallyAuthenticateNtlm { get; set; }
 
         public void Save(string fileName) {
             var ws = new XmlWriterSettings {NewLineHandling = NewLineHandling.Entitize};

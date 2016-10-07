@@ -31,6 +31,8 @@ namespace Swensen.Ior.Core {
         public Dictionary<string, string> ContentHeaders { get; private set; }
         public HashSet<string> AcceptEncodings {  get; private set;}
 
+        public bool AutomaticallyAuthenticateNtlm { get; set; }
+
         public string Body { get; private set; }
 
         public static List<string> TryCreate(RequestViewModel vm, out RequestModel requestModel) {
@@ -102,7 +104,8 @@ namespace Swensen.Ior.Core {
                     RequestHeaders = requestHeaders,
                     ContentHeaders = contentHeaders,
                     AcceptEncodings = acceptEncodings,
-                    Body = vm.Body
+                    Body = vm.Body,
+                    AutomaticallyAuthenticateNtlm = vm.AutomaticallyAuthenticateNtlm
                 };
             }
 

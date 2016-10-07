@@ -226,5 +226,17 @@ namespace Swensen.Ior.Properties {
                 this["EnableAutomaticContentDecompression"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutomaticallyAuthenticateNtlm {
+            get {
+                return ((bool)(this["AutomaticallyAuthenticateNtlm"]));
+            }
+            set {
+                this["AutomaticallyAuthenticateNtlm"] = value;
+            }
+        }
     }
 }
